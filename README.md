@@ -26,10 +26,11 @@
 ## 结构（Structure）
 
 - `agent/skills/`：一些可移植的「AI Agent Skill」包（每个子目录基本都是一个独立技能）。
+  - `agent/skills/brainstorming/`：将模糊想法转化为已验证的设计/规格。用于任何创造性工作之前（新功能、UI/组件、行为变更、重构），以及用户要求头脑风暴、定义需求、提出方案或编写设计文档时。(来自 `superpowers:brainstorm`)
   - `agent/skills/headless-web-viewer/`：用 Playwright 无头渲染网页、提取可见文本/截图。
-  - `agent/skills/repo-deep-dive-report/`：生成“读仓库深度报告”的工作流（Markdown + 离线 HTML）。
+  - `agent/skills/repo-deep-dive-report/`：生成"读仓库深度报告"的工作流（Markdown + 离线 HTML）。
   - `agent/skills/skill-review-audit/`：对任意 Skill 目录做系统性审计（触发契约、工具/副作用、风险与改进建议）。
-  - `agent/skills/ui-ux-spec-genome/`：构建一套可复刻、可移植的 UI/UX 规范“基因”：扫描 UI 源并生成 `ui-ux-spec/` 文档包骨架，用于规范提取与 UI-only 分阶段改造。
+  - `agent/skills/ui-ux-spec-genome/`：构建一套可复刻、可移植的 UI/UX 规范"基因"：扫描 UI 源并生成 `ui-ux-spec/` 文档包骨架，用于规范提取与 UI-only 分阶段改造。
 - `.claude/`：个人工具的工作目录（可能为空/随时间变化），通常可忽略。
 - `LICENSE`：默认许可证。
 
