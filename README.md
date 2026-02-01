@@ -28,10 +28,67 @@
 - `agent/skills/`：一些可移植的「AI Agent Skill」包（每个子目录基本都是一个独立技能）。
   - `agent/skills/headless-web-viewer/`：用 Playwright 无头渲染网页、提取可见文本/截图。
   - `agent/skills/repo-deep-dive-report/`：生成“读仓库深度报告”的工作流（Markdown + 离线 HTML）。
+  - `agent/skills/skill-review-audit/`：对任意 Skill 目录做系统性审计（触发契约、工具/副作用、风险与改进建议）。
 - `.claude/`：个人工具的工作目录（可能为空/随时间变化），通常可忽略。
 - `LICENSE`：默认许可证。
 
 > 具体每个技能怎么装、怎么用：直接看对应目录下的 `README.md` / `SKILL.md`。
+
+## 安装 Skills（OpenSkills）
+
+本仓库的可安装 Skills 位于 `agent/skills/`（每个子目录包含 `SKILL.md`）。推荐使用 [OpenSkills](https://github.com/numman-ali/openskills) 来安装/同步/加载这些技能。
+
+### 前置条件
+
+- Node.js 20.6+（OpenSkills 的要求）
+- Git（用于从 GitHub 拉取）
+
+### 安装 OpenSkills（如果你本地没有）
+
+你可以直接用 `npx` 运行（无需提前安装）：
+
+```bash
+npx openskills --help
+```
+
+或者全局安装（可选）：
+
+```bash
+npm i -g openskills
+```
+
+### 安装本仓库的 Skills
+
+安装到全局（Claude Code 默认目录 `~/.claude/skills`）：
+
+```bash
+npx openskills install https://github.com/okwinds/miscellany --global
+```
+
+如果你同时在用多个 Agent，希望走通用目录（`~/.agent/skills`），加上 `--universal`：
+
+```bash
+npx openskills install https://github.com/okwinds/miscellany --universal --global
+```
+
+安装到当前项目（写入 `./.claude/skills` 或 `./.agent/skills`）：
+
+```bash
+npx openskills install https://github.com/okwinds/miscellany
+# 或：npx openskills install https://github.com/okwinds/miscellany --universal
+```
+
+安装后，在你的项目目录生成/更新 `AGENTS.md`（让 Agent “看见”这些技能）：
+
+```bash
+npx openskills sync
+```
+
+需要让 AI “加载”某个技能时（用于把技能内容读进上下文）：
+
+```bash
+npx openskills read headless-web-viewer
+```
 
 ## For Human（最后写给人类的碎碎念）
 
