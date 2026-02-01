@@ -22,6 +22,20 @@ Notes:
 EOF
 }
 
+tmp_files=()
+mktemp_track() {
+  local t
+  t="$(mktemp)"
+  tmp_files+=("$t")
+  echo "$t"
+}
+cleanup_tmp_files() {
+  if ((${#tmp_files[@]})); then
+    rm -f "${tmp_files[@]}" 2>/dev/null || true
+  fi
+}
+trap cleanup_tmp_files EXIT
+
 root="."
 out=""
 force_out=0
@@ -125,13 +139,6 @@ default_ignores=(
   "vendor/**"
   "**/skills/**"
   "ui-ux-spec/**"
-  "01_Foundation/**"
-  "02_Components/**"
-  "03_Patterns/**"
-  "04_Pages/**"
-  "05_A11y/**"
-  "06_Assets/**"
-  "07_Engineering_Constraints/**"
 )
 
 rg_ignore_args=()
@@ -153,7 +160,7 @@ scan_roots=("$root")
 
 list_globs() {
   local tmp
-  tmp="$(mktemp)"
+  tmp="$(mktemp_track)"
   for g in "$@"; do
     rg --files "${rg_ignore_args[@]}" -g "$g" "${scan_roots[@]}" >> "$tmp" 2>/dev/null || true
   done
@@ -174,7 +181,7 @@ list_matches() {
   for g in "$@"; do
     args+=("-g" "$g")
   done
-  tmp="$(mktemp)"
+  tmp="$(mktemp_track)"
   rg -l --no-messages "${rg_ignore_args[@]}" "${args[@]}" "$pattern" "${scan_roots[@]}" >> "$tmp" 2>/dev/null || true
   if [[ -s "$tmp" ]]; then
     sort -u "$tmp" | sed "s|^$root/||"

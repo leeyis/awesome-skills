@@ -35,7 +35,7 @@ Examples:
 
 ## Quick start
 1) Confirm mode: new project (greenfield) or refactor existing. Clarify that business logic is out of scope.
-2) If existing repo: run `scripts/scan_ui_sources.sh` to scan the repo root (no directory layout assumptions). It uses common globs + keyword hits, and ignores common build/cache dirs and extraction output folders by default.
+2) If existing repo: run `scripts/scan_ui_sources.sh` to scan the repo root (no directory layout assumptions). It uses common globs + keyword hits, and ignores common build/cache dirs and `ui-ux-spec/**` by default (add `--ignore` if your extraction output lives elsewhere, e.g. `docs/ui-ux-spec/**`).
 3) Optionally: `scripts/scan_ui_sources.sh <repo_root> [out_file] [extra_glob ...]` or `--root/--out/--force/--ignore` for nonstandard layouts.
 4) Create the output folder (default `./ui-ux-spec`) via `scripts/generate_output_skeleton.sh` and write all extraction results inside it.
 5) Produce outputs in the default structure (see "Output structure").
@@ -47,6 +47,17 @@ Examples:
   - Tokens + global styles
   - Component catalog
   - Page templates
+
+## Heuristic disclaimer (read this to avoid surprises)
+- `scripts/scan_ui_sources.sh` is a heuristic inventory tool. It finds likely places to look; it does not guarantee complete coverage, and it does not extract “final answers” (token values, component APIs, page rules) automatically.
+- If scan output looks incomplete, add `extra_glob` patterns and/or adjust ignores (`--no-default-ignore`, `--ignore ...`) before assuming the repo lacks something.
+
+## Common mistakes
+- Scanning the wrong root (monorepos): use `--root` explicitly.
+- “It didn’t find my tokens”: add extra globs for your conventions (e.g. `**/design/**`, `**/*vars*.*`) and check whether defaults are excluding paths.
+- Output file already exists: the scan refuses to overwrite unless you pass `--force`.
+- Generated `ui-ux-spec/` under a non-default folder and accidentally re-scanned it: add `--ignore <your-output>/**` so scan results stay focused.
+- Sharing the raw scan report externally: redact internal paths, package names, and component identifiers first.
 
 ## Modes (choose one)
 

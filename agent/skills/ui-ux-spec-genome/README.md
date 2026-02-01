@@ -19,8 +19,15 @@ From this repo root, set `SKILLS_DIR` to whatever skills folder your tool scans 
 
 ```bash
 SKILLS_DIR=~/.codex/skills
+case "$SKILLS_DIR" in
+  ""|"/") echo "Refusing: SKILLS_DIR is empty or /" >&2; exit 2 ;;
+esac
+case "$SKILLS_DIR" in
+  */skills|*/skills/) ;;
+  *) echo "Refusing: SKILLS_DIR should usually end with /skills (got: $SKILLS_DIR)" >&2; exit 2 ;;
+esac
 mkdir -p "$SKILLS_DIR"
-rm -rf "$SKILLS_DIR/ui-ux-spec-genome"
+rm -rf -- "$SKILLS_DIR/ui-ux-spec-genome"
 cp -R agent/skills/ui-ux-spec-genome "$SKILLS_DIR/ui-ux-spec-genome"
 ```
 
@@ -28,8 +35,15 @@ cp -R agent/skills/ui-ux-spec-genome "$SKILLS_DIR/ui-ux-spec-genome"
 
 ```bash
 SKILLS_DIR=~/.codex/skills
+case "$SKILLS_DIR" in
+  ""|"/") echo "Refusing: SKILLS_DIR is empty or /" >&2; exit 2 ;;
+esac
+case "$SKILLS_DIR" in
+  */skills|*/skills/) ;;
+  *) echo "Refusing: SKILLS_DIR should usually end with /skills (got: $SKILLS_DIR)" >&2; exit 2 ;;
+esac
 mkdir -p "$SKILLS_DIR"
-rm -rf "$SKILLS_DIR/ui-ux-spec-genome"
+rm -rf -- "$SKILLS_DIR/ui-ux-spec-genome"
 ln -s "$(pwd)/agent/skills/ui-ux-spec-genome" "$SKILLS_DIR/ui-ux-spec-genome"
 ```
 
@@ -44,6 +58,7 @@ Prereqs for openskills:
 Install from a cloneable repo URL (do **not** use a GitHub `.../tree/...` subdirectory link):
 
 ```bash
+# Recommended: pin a version, e.g. npx openskills@0.0.0 install ...
 npx openskills install https://github.com/okwinds/miscellany
 ```
 

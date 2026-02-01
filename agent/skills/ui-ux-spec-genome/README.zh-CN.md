@@ -19,8 +19,15 @@
 
 ```bash
 SKILLS_DIR=~/.codex/skills
+case "$SKILLS_DIR" in
+  ""|"/") echo "拒绝执行：SKILLS_DIR 为空或为 /" >&2; exit 2 ;;
+esac
+case "$SKILLS_DIR" in
+  */skills|*/skills/) ;;
+  *) echo "拒绝执行：SKILLS_DIR 通常应以 /skills 结尾（当前：$SKILLS_DIR）" >&2; exit 2 ;;
+esac
 mkdir -p "$SKILLS_DIR"
-rm -rf "$SKILLS_DIR/ui-ux-spec-genome"
+rm -rf -- "$SKILLS_DIR/ui-ux-spec-genome"
 cp -R agent/skills/ui-ux-spec-genome "$SKILLS_DIR/ui-ux-spec-genome"
 ```
 
@@ -28,8 +35,15 @@ cp -R agent/skills/ui-ux-spec-genome "$SKILLS_DIR/ui-ux-spec-genome"
 
 ```bash
 SKILLS_DIR=~/.codex/skills
+case "$SKILLS_DIR" in
+  ""|"/") echo "拒绝执行：SKILLS_DIR 为空或为 /" >&2; exit 2 ;;
+esac
+case "$SKILLS_DIR" in
+  */skills|*/skills/) ;;
+  *) echo "拒绝执行：SKILLS_DIR 通常应以 /skills 结尾（当前：$SKILLS_DIR）" >&2; exit 2 ;;
+esac
 mkdir -p "$SKILLS_DIR"
-rm -rf "$SKILLS_DIR/ui-ux-spec-genome"
+rm -rf -- "$SKILLS_DIR/ui-ux-spec-genome"
 ln -s "$(pwd)/agent/skills/ui-ux-spec-genome" "$SKILLS_DIR/ui-ux-spec-genome"
 ```
 
@@ -44,6 +58,7 @@ openskills 前置条件：
 从可 clone 的仓库 URL 安装（不要用 GitHub 的 `.../tree/...` 子目录链接）：
 
 ```bash
+# 建议固定版本，例如：npx openskills@0.0.0 install ...
 npx openskills install https://github.com/okwinds/miscellany
 ```
 
