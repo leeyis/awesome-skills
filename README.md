@@ -30,6 +30,12 @@
   - `agent/skills/headless-web-viewer/`：用 Playwright 无头渲染网页、提取可见文本/截图。
   - `agent/skills/repo-deep-dive-report/`：生成"读仓库深度报告"的工作流（Markdown + 离线 HTML）。
   - `agent/skills/skill-review-audit/`：对任意 Skill 目录做系统性审计（触发契约、工具/副作用、风险与改进建议）。
+  - **离线文档操作套件（`*-offline`）**：一组偏“本地读写/编辑/回包/格式保真”的 Office/PDF 工作流（安装依赖可能需要网络，但运行阶段不依赖在线服务）。
+    - `agent/skills/pdf-offline/`：PDF 读写/合并拆分/表单处理（含 `doc_utils.py` 快捷 CLI）。
+    - `agent/skills/xlsx-offline/`：Excel 读写 + LibreOffice 公式重算与错误扫描（默认隔离 profile，减少污染）。
+    - `agent/skills/docx-offline/`：DOCX 读写 + OOXML 解包编辑回包 + redlining（修订/批注）。
+    - `agent/skills/pptx-offline/`：PPTX 读写 + OOXML 工作流 + html2pptx（HTML→PPT）+ 缩略图/替换/重排脚本。
+    - `agent/skills/offline-office-migration.md`：套件总览与触发建议。
   - `agent/skills/ui-ux-spec-genome/`：构建一套可复刻、可移植的 UI/UX 规范"基因"：扫描 UI 源并生成 `ui-ux-spec/` 文档包骨架，用于规范提取与 UI-only 分阶段改造。
 - `.claude/`：个人工具的工作目录（可能为空/随时间变化），通常可忽略。
 - `LICENSE`：默认许可证。
