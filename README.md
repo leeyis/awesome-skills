@@ -37,6 +37,7 @@
     - `agent/skills/pptx-offline/`：PPTX 读写 + OOXML 工作流 + html2pptx（HTML→PPT）+ 缩略图/替换/重排脚本。
     - `agent/skills/offline-office-migration.md`：套件总览与触发建议。
   - `agent/skills/ui-ux-spec-genome/`：构建一套可复刻、可移植的 UI/UX 规范"基因"：扫描 UI 源并生成 `ui-ux-spec/` 文档包骨架，用于规范提取与 UI-only 分阶段改造。
+  - `agent/skills/agently-task-dev/`：Agently 框架专用开发技能，生成可运行代码 + 回归测试（验证 schema/ensure_keys 和流式响应 delta/instant/streaming_parse），支持 ToolExtension（Search/Browse/MCP）、TriggerFlow 编排、ChromaDB 知识库，以及 SSE/WS/HTTP 服务化。
 - `.claude/`：个人工具的工作目录（可能为空/随时间变化），通常可忽略。
 - `LICENSE`：默认许可证。
 
