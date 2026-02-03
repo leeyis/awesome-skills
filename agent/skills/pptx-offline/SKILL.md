@@ -1,5 +1,6 @@
 ---
 name: pptx-offline
+version: 0.1.0
 description: PPTX 文档离线读写：解析/替换/重排/缩略图、OOXML 解包编辑回包，以及 html2pptx（HTML→PPT）工作流。适用于生成与维护演示文稿（依赖安装可能需要网络）。
 ---
 

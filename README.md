@@ -47,6 +47,12 @@
 
 本仓库的可安装 Skills 位于 `agent/skills/`（每个子目录包含 `SKILL.md`）。推荐使用 [OpenSkills](https://github.com/numman-ali/openskills) 来安装/同步/加载这些技能。
 
+## Skill 版本号（Versioning）
+
+- 每个 Skill 的 `SKILL.md` 顶部 YAML front matter 里包含 `version: MAJOR.MINOR.PATCH`（SemVer）。
+- **只要修改了 `agent/skills/<skill>/` 下任意文件（包括脚本/README/参考资料），就必须同时 bump 该 Skill 的 `version`**。
+- 仓库内置 CI（GitHub Actions）会在 PR / push 时检查：有改动但未 bump 版本会直接失败。
+
 ### 风险提示（使用 Skills 前必读）
 
 Skills 本质上是一段“可执行的工作流/提示词 + 脚本/工具调用约定”。它们可能会触发（或引导你触发）诸如：运行命令、读写文件、联网请求、安装依赖、抓取第三方内容等行为。

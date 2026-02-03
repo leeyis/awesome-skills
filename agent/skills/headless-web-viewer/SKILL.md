@@ -1,5 +1,6 @@
 ---
 name: headless-web-viewer
+version: 0.1.0
 description: Render and view webpages using a headless browser (Playwright) to fetch JS-rendered HTML, extract visible text, and optionally save full-page screenshots. Use when a user asks to “无头浏览器打开/查看网页”, needs the rendered DOM instead of raw curl HTML, or wants a screenshot of a page.
 ---
 

@@ -1,5 +1,6 @@
 ---
 name: pdf-offline
+version: 0.1.0
 description: PDF 文档离线读写与表单处理：提取文本/表格、合并拆分、生成 PDF、填写表单。适用于“本地处理/读取/生成 PDF 文件”（依赖安装可能需要网络）。
 ---
 

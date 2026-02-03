@@ -1,5 +1,6 @@
 ---
 name: agently-task-dev
+version: 0.1.0
 description: Use only when the user explicitly wants to build with the Agently framework (mentions Agently/agently/OpenAICompatible/TriggerFlow/ToolExtension/ChromaCollection, or says “用 Agently 做/用 agently 做”). Deliver runnable code plus regression tests validating schema/ensure_keys and streaming (delta/instant/streaming_parse), with optional tools (Search/Browse/MCP), TriggerFlow orchestration, KB (ChromaDB), and serviceization (SSE/WS/HTTP). Do not use for generic streaming/testing questions that are not about Agently, or for prompt-only writing without tests/structure.
 ---
 

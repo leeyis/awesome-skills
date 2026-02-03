@@ -1,5 +1,6 @@
 ---
 name: xlsx-offline
+version: 0.1.0
 description: Excel 表格离线读写与公式校验：创建/修改 xlsx，保持公式可复算，输出必须零公式错误；附带 LibreOffice 重算与错误扫描脚本（依赖安装可能需要网络）。
 ---
 

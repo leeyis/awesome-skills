@@ -1,5 +1,6 @@
 ---
 name: brainstorming
+version: 0.1.0
 description: "Turn vague ideas into a validated design/spec through structured brainstorming. Use before any creative work (new features, UI/components, behavior changes, refactors) and whenever a user asks to brainstorm, define requirements, propose approaches, or write a design doc."
 ---
 
