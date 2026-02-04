@@ -30,6 +30,7 @@
   - `agent/skills/headless-web-viewer/`：用 Playwright 无头渲染网页、提取可见文本/截图。
   - `agent/skills/repo-deep-dive-report/`：生成"读仓库深度报告"的工作流（Markdown + 离线 HTML）。
   - `agent/skills/skill-review-audit/`：对任意 Skill 目录做系统性审计（触发契约、工具/副作用、风险与改进建议）。
+  - `agent/skills/skill-open-source/`：把本地 skill 以可复用方式发布到本仓库：复制目录、排除依赖、生成中英文 README、规范化路径，并处理版本号与 README 同步。
   - **离线文档操作套件（`*-offline`）**：一组偏“本地读写/编辑/回包/格式保真”的 Office/PDF 工作流（安装依赖可能需要网络，但运行阶段不依赖在线服务）。
     - `agent/skills/pdf-offline/`：PDF 读写/合并拆分/表单处理（含 `doc_utils.py` 快捷 CLI）。
     - `agent/skills/xlsx-offline/`：Excel 读写 + LibreOffice 公式重算与错误扫描（默认隔离 profile，减少污染）。
@@ -38,6 +39,7 @@
     - `agent/skills/offline-office-migration.md`：套件总览与触发建议。
   - `agent/skills/ui-ux-spec-genome/`：构建一套可复刻、可移植的 UI/UX 规范"基因"：扫描 UI 源并生成 `ui-ux-spec/` 文档包骨架，用于规范提取与 UI-only 分阶段改造。
   - `agent/skills/agently-task-dev/`：Agently 框架专用开发技能，生成可运行代码 + 回归测试（验证 schema/ensure_keys 和流式响应 delta/instant/streaming_parse），支持 ToolExtension（Search/Browse/MCP）、TriggerFlow 编排、ChromaDB 知识库，以及 SSE/WS/HTTP 服务化。
+  - `agent/skills/skill-create-flow/`：Skill 创建流程：从模糊想法到可测试的技能规格。适合创建基于流程的 Agent 技能（如方法论型、决策型、多步骤工作流），而非纯参考/查询型技能或简单命令。
 - `.claude/`：个人工具的工作目录（可能为空/随时间变化），通常可忽略。
 - `LICENSE`：默认许可证。
 
@@ -52,6 +54,7 @@
 - 每个 Skill 的 `SKILL.md` 顶部 YAML front matter 里包含 `version: MAJOR.MINOR.PATCH`（SemVer）。
 - **只要修改了 `agent/skills/<skill>/` 下任意文件（包括脚本/README/参考资料），就必须同时 bump 该 Skill 的 `version`**。
 - 仓库内置 CI（GitHub Actions）会在 PR / push 时检查：有改动但未 bump 版本会直接失败。
+- **新增 Skill 到 `agent/skills/` 时，需要同步更新仓库根 `README.md` 的 Skills 清单**（可用 `agent/skills/skill-open-source/scripts/publish_skill.py` 的 `--update-repo-readme` 自动完成）。
 
 ### 风险提示（使用 Skills 前必读）
 
