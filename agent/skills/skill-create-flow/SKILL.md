@@ -1,5 +1,6 @@
 ---
 name: skill-create-flow
+version: 0.1.0
 description: Create new high-quality agent skills with a standalone, repeatable workflow (no dependency on other skills). Use when you want to go from a vague skill idea → narrow scope → extract expert frameworks → write SKILL.md + examples/evals/index/changelog artifacts → self-validate with test prompts.
 ---
 
