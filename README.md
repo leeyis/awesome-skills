@@ -30,7 +30,7 @@
   - `agent/skills/headless-web-viewer/`：用 Playwright 无头渲染网页、提取可见文本/截图。
   - `agent/skills/repo-deep-dive-report/`：生成"读仓库深度报告"的工作流（Markdown + 离线 HTML）。
   - `agent/skills/skill-review-audit/`：对任意 Skill 目录做系统性审计（触发契约、工具/副作用、风险与改进建议）。
-  - `agent/skills/skill-open-source/`：把本地 skill 以可复用方式发布到本仓库：复制目录、排除依赖、生成中英文 README、规范化路径，并处理版本号与 README 同步。
+  - `agent/skills/codebase-spec-extractor/`：从既有代码库提炼可复刻的工程规格（inventory + spec skeleton + verification），脚本用于**辅助发现缺口**而非“完整性证明”。
   - **离线文档操作套件（`*-offline`）**：一组偏“本地读写/编辑/回包/格式保真”的 Office/PDF 工作流（安装依赖可能需要网络，但运行阶段不依赖在线服务）。
     - `agent/skills/pdf-offline/`：PDF 读写/合并拆分/表单处理（含 `doc_utils.py` 快捷 CLI）。
     - `agent/skills/xlsx-offline/`：Excel 读写 + LibreOffice 公式重算与错误扫描（默认隔离 profile，减少污染）。
@@ -54,7 +54,7 @@
 - 每个 Skill 的 `SKILL.md` 顶部 YAML front matter 里包含 `version: MAJOR.MINOR.PATCH`（SemVer）。
 - **只要修改了 `agent/skills/<skill>/` 下任意文件（包括脚本/README/参考资料），就必须同时 bump 该 Skill 的 `version`**。
 - 仓库内置 CI（GitHub Actions）会在 PR / push 时检查：有改动但未 bump 版本会直接失败。
-- **新增 Skill 到 `agent/skills/` 时，需要同步更新仓库根 `README.md` 的 Skills 清单**（可用 `agent/skills/skill-open-source/scripts/publish_skill.py` 的 `--update-repo-readme` 自动完成）。
+- **新增 Skill 到 `agent/skills/` 时，需要同步更新仓库根 `README.md` 的 Skills 清单**（目前请手动维护该清单）。
 
 ### 风险提示（使用 Skills 前必读）
 
