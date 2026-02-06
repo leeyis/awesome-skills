@@ -29,6 +29,7 @@
   - `agent/skills/brainstorming/`：将模糊想法转化为已验证的设计/规格。用于任何创造性工作之前（新功能、UI/组件、行为变更、重构），以及用户要求头脑风暴、定义需求、提出方案或编写设计文档时。(来自 `superpowers:brainstorm`)
   - `agent/skills/headless-web-viewer/`：用 Playwright 无头渲染网页、提取可见文本/截图。
   - `agent/skills/repo-deep-dive-report/`：生成"读仓库深度报告"的工作流（Markdown + 离线 HTML）。
+  - `agent/skills/repo-compliance-audit/`：对任意代码仓库进行合规审计并生成可取证报告（Markdown + JSON findings），支持人类勾选 `finding.id` 后执行选择性整改（默认不改业务逻辑）。
   - `agent/skills/skill-review-audit/`：对任意 Skill 目录做系统性审计（触发契约、工具/副作用、风险与改进建议）。
   - `agent/skills/codebase-spec-extractor/`：从既有代码库提炼可复刻的工程规格（inventory + spec skeleton + verification），脚本用于**辅助发现缺口**而非“完整性证明”。
   - `agent/skills/prd-writing-guide/`：写出完整、无歧义、可直接交付研发落地的 PRD（含需求发现问题清单、结构化模板、完整性检查与常见坑位）。
