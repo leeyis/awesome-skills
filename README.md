@@ -31,6 +31,8 @@
   - `agent/skills/repo-deep-dive-report/`：生成"读仓库深度报告"的工作流（Markdown + 离线 HTML）。
   - `agent/skills/skill-review-audit/`：对任意 Skill 目录做系统性审计（触发契约、工具/副作用、风险与改进建议）。
   - `agent/skills/codebase-spec-extractor/`：从既有代码库提炼可复刻的工程规格（inventory + spec skeleton + verification），脚本用于**辅助发现缺口**而非“完整性证明”。
+  - `agent/skills/prd-writing-guide/`：写出完整、无歧义、可直接交付研发落地的 PRD（含需求发现问题清单、结构化模板、完整性检查与常见坑位）。
+  - `agent/skills/prd-to-engineering-spec/`：把 PRD 转成可落地的工程规格（架构/数据/API/安全/运维/测试/任务拆分），并提供生成骨架与完整性校验脚本。
   - **离线文档操作套件（`*-offline`）**：一组偏“本地读写/编辑/回包/格式保真”的 Office/PDF 工作流（安装依赖可能需要网络，但运行阶段不依赖在线服务）。
     - `agent/skills/pdf-offline/`：PDF 读写/合并拆分/表单处理（含 `doc_utils.py` 快捷 CLI）。
     - `agent/skills/xlsx-offline/`：Excel 读写 + LibreOffice 公式重算与错误扫描（默认隔离 profile，减少污染）。
